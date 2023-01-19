@@ -12,7 +12,8 @@ const pastePng = async () => {
         args = [path.join(__dirname, 'bin/pngpaste'), ['-']];
         
         const child = child_process.execFile(...args, {
-            encoding: 'buffer'
+            encoding: 'buffer',
+            maxBuffer: 1024 * 1024 * 50,
         });
         child.on('error', (err) => {
             try {
